@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var fetchTextField: UITextField!
     @IBOutlet weak var deleteTextField: UITextField!
     
-    var storeManager: KVStoreManager!
+    var storeManager: KVStoreManager<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         }
         
         do {
+            
          try storeManager.insert(value: valueUnwrapped.data(using: String.Encoding.utf8)!, for: keyUnwrapped)
         showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully added key value pair in database", okAction: nil)
             
@@ -61,28 +62,18 @@ class ViewController: UIViewController {
             return
         }
         
-        do {
-            let data = try storeManager.getValue(for: keyUnwrapped)
-            guard let fetchedString = String(data: data, encoding: .utf8) else {
-              showAlert(withTitle: "Error", buttonTitle: "OK", message: "Failed to convert blob to string", okAction: nil)
-                return
-            }
-            
-            showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully Fetched Value. Your Key: \(keyUnwrapped), Value: \(fetchedString)", okAction: nil)
-            
-        } catch (let error) {
-            var errorMessage = error.localizedDescription
-            if let sqliteError = error as? SQLiteError {
-                errorMessage = sqliteError.description
-            }
-            showAlert(withTitle: "Error", buttonTitle: "OK", message: errorMessage, okAction: nil)
-            
+        let data = storeManager[keyUnwrapped] //storeManager.getValue(for: keyUnwrapped)
+        guard let unwrappedData = data, let fetchedString = String(data: unwrappedData, encoding: .utf8) else {
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: "Failed to get value for \(keyUnwrapped)", okAction: nil)
+            return
         }
+        
+        showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully Fetched Value. Your Key: \(keyUnwrapped), Value: \(fetchedString)", okAction: nil)
+        
     }
     
     @IBAction func tappedDelete(_ sender: UIButton) {
         let key = deleteTextField.text
-        
         guard let keyUnwrapped = key, keyUnwrapped.characters.count > 0 else {
             showAlert(withTitle: "Error", buttonTitle: "OK", message: "Key is empty. Key should have atleast one character", okAction: nil)
             return
