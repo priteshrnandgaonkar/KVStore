@@ -22,10 +22,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         do {
             storeManager = try KVStoreManager(with: "TestKVPersistence")
-            showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully openend Database connection", okAction: nil)
         }
         catch (let error) {
-            showAlert(withOKTitle: "OK", message: error.localizedDescription, okAction: nil)
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: error.localizedDescription, okAction: nil)
         }
         
     }
@@ -36,13 +35,72 @@ class ViewController: UIViewController {
     }
 
     @IBAction func insertTapped(_ sender: UIButton) {
+        let key = insertKeyTextField.text
+        let value = insertValueTextField.text
         
+        guard let keyUnwrapped = key, let valueUnwrapped = value, valueUnwrapped.characters.count > 0, keyUnwrapped.characters.count > 0 else {
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: "Either key or Data is empty. Please add something", okAction: nil)
+            return
+        }
+        
+        do {
+         try storeManager.insert(value: valueUnwrapped.data(using: String.Encoding.utf8)!, for: keyUnwrapped)
+        showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully added key value pair in database", okAction: nil)
+            
+        } catch (let error) {
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: error.localizedDescription, okAction: nil)
+
+        }
     }
     
     @IBAction func fetchTapped(_ sender: UIButton) {
+        let key = fetchTextField.text
         
+        guard let keyUnwrapped = key, keyUnwrapped.characters.count > 0 else {
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: "Key is empty. Key should have atleast one character", okAction: nil)
+            return
+        }
+        
+        do {
+            let data = try storeManager.getValue(for: keyUnwrapped)
+            guard let fetchedString = String(data: data, encoding: .utf8) else {
+              showAlert(withTitle: "Error", buttonTitle: "OK", message: "Failed to convert blob to string", okAction: nil)
+                return
+            }
+            
+            showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully Fetched Value. Your Key: \(keyUnwrapped), Value: \(fetchedString)", okAction: nil)
+            
+        } catch (let error) {
+            var errorMessage = error.localizedDescription
+            if let sqliteError = error as? SQLiteError {
+                errorMessage = sqliteError.description
+            }
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: errorMessage, okAction: nil)
+            
+        }
     }
+    
     @IBAction func tappedDelete(_ sender: UIButton) {
+        let key = deleteTextField.text
+        
+        guard let keyUnwrapped = key, keyUnwrapped.characters.count > 0 else {
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: "Key is empty. Key should have atleast one character", okAction: nil)
+            return
+        }
+        
+        do {
+            
+            try storeManager.deleteValue(for: keyUnwrapped)
+            showAlert(withTitle: "Success", buttonTitle: "OK", message: "Successfully Deleted Key. \(keyUnwrapped)", okAction: nil)
+            
+        } catch (let error) {
+            var errorMessage = error.localizedDescription
+            if let sqliteError = error as? SQLiteError {
+                errorMessage = sqliteError.description
+            }
+            showAlert(withTitle: "Error", buttonTitle: "OK", message: errorMessage, okAction: nil)
+            
+        }
     }
 }
 
@@ -54,7 +112,7 @@ extension UIViewController {
         
         controller.addAction(action)
         
-        present(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil)
 
     }
 }
