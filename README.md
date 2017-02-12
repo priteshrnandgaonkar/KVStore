@@ -1,8 +1,34 @@
-#KVStore ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
+#KVStore ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Pod Support](https://img.shields.io/cocoapods/v/KVStore.svg?maxAge=2592000)
 
 KVStore is a wrapper over sqlite to store and persist key value pairs.
 
 #Installation
+### CocoaPods
+
+[CocoaPods](https://cocoapods.org/) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```
+$ gem install cocoapods
+
+```
+To integrate CardsStack into your Xcode project using CocoaPods, specify it in your Podfile:
+
+```
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'KVStore', '1.3'
+end
+
+```
+Then, run the following command:
+
+```
+$ pod install
+```
+
 ### Carthage
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
@@ -16,7 +42,7 @@ $ brew install carthage
 To integrate CardsStack into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "priteshrnandgaonkar/KVStore" == 1.0
+github "priteshrnandgaonkar/KVStore" == 1.3
 
 ```
 Run `carthage update` to build the framework and drag the built CardsStack.framework into your Xcode project.
