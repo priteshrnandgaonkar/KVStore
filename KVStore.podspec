@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "KVStore"
-  spec.version = "1.2"
+  spec.version = "1.3"
   spec.summary = "Swift wrapper over sqlite CRUD"
   spec.homepage = "https://github.com/priteshrnandgaonkar/KVStore"
   spec.license = { type: 'MIT', file: 'LICENSE.md' }
@@ -11,8 +11,8 @@ Pod::Spec.new do |spec|
   }
   spec.platform = :ios, "8.0"
   spec.requires_arc = true
-  spec.source = { git: "https://github.com/priteshrnandgaonkar/KVStore.git", tag: "1.2" }
+  spec.source = { git: "https://github.com/priteshrnandgaonkar/KVStore.git", tag: "1.3" }
   spec.source_files = "KVStore/**/*.{h,swift}"
   spec.library = 'sqlite3'
-  
+
 end
