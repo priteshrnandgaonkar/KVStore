@@ -42,7 +42,7 @@ $ brew install carthage
 To integrate CardsStack into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "priteshrnandgaonkar/KVStore" == 1.3
+github "priteshrnandgaonkar/KVStore"
 
 ```
 Run `carthage update` to build the framework and drag the built CardsStack.framework into your Xcode project.
