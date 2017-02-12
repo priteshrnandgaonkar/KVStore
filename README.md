@@ -70,8 +70,14 @@ This `KVStoreManager` has the following API's which eases the storage and fetchi
 func insert<T: Hashable>(value: Data, for key: T) throws
 func deleteValue<T: Hashable>(for key: T) throws
 func update<T: Hashable>(value: Data, for key: T) throws
-func getValue<T: Hashable>(for key: T) throws -> Data
+func getValue<T: Hashable>(for key: T) -> Data?
  
+```
+
+You can also access the value through subscript syntax, like as follows
+
+``` swift
+let data = storeManager[key]
 ```
 
 The method definitions are self explanatory as to what they perform. The important point is that the `key` which is passed as argument should be of type `Hashable` and the value would be stored as `Data`
