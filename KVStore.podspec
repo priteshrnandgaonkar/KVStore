@@ -13,4 +13,6 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.source = { git: "https://github.com/priteshrnandgaonkar/KVStore.git", tag: "1.2" }
   spec.source_files = "KVStore/**/*.{h,swift}"
+  spec.library = 'sqlite3'
+  
 end
