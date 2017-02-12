@@ -40,8 +40,6 @@ extension SQLiteError: CustomStringConvertible {
             return message
         case .query(let message):
             return message
-        default:
-            return "Unknown Error"
         }
     }
 }
