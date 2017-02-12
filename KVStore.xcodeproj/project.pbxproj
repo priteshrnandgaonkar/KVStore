@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2104A1741E4C8AFC00ABA7D8 /* KVStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2104A1731E4C8AFC00ABA7D8 /* KVStoreManager.swift */; };
+		210F9FE01E5019AA00B62F27 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211666E71E4B052200C9355E /* libsqlite3.tbd */; };
+		210F9FE91E502B0300B62F27 /* DatabaseFiles in Resources */ = {isa = PBXBuildFile; fileRef = 210F9FE81E502B0300B62F27 /* DatabaseFiles */; };
+		210F9FEB1E502BE700B62F27 /* KVStore.h in Sources */ = {isa = PBXBuildFile; fileRef = 211666CA1E4AE0AF00C9355E /* KVStore.h */; };
 		211666D11E4AE0AF00C9355E /* KVStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 211666C71E4AE0AF00C9355E /* KVStore.framework */; };
 		211666D61E4AE0AF00C9355E /* KVStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211666D51E4AE0AF00C9355E /* KVStoreTests.swift */; };
 		211666D81E4AE0AF00C9355E /* KVStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 211666CA1E4AE0AF00C9355E /* KVStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		211666E21E4AE24300C9355E /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211666E11E4AE24300C9355E /* RowModel.swift */; };
+		211666E51E4B02C300C9355E /* SQLiteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211666E41E4B02C300C9355E /* SQLiteDatabase.swift */; };
+		211666E81E4B052200C9355E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211666E71E4B052200C9355E /* libsqlite3.tbd */; };
+		211A22811E4FA16800A2D5F9 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 2104A16F1E4C6BF600ABA7D8 /* sqlite3.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		211A22831E4FA1C600A2D5F9 /* sqlite3.h in Sources */ = {isa = PBXBuildFile; fileRef = 2104A16F1E4C6BF600ABA7D8 /* sqlite3.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +32,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2104A16F1E4C6BF600ABA7D8 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		2104A1731E4C8AFC00ABA7D8 /* KVStoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVStoreManager.swift; sourceTree = "<group>"; };
+		210F9FE81E502B0300B62F27 /* DatabaseFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DatabaseFiles; sourceTree = "<group>"; };
 		211666C71E4AE0AF00C9355E /* KVStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		211666CA1E4AE0AF00C9355E /* KVStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KVStore.h; sourceTree = "<group>"; };
 		211666CB1E4AE0AF00C9355E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		211666D01E4AE0AF00C9355E /* KVStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		211666D51E4AE0AF00C9355E /* KVStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVStoreTests.swift; sourceTree = "<group>"; };
 		211666D71E4AE0AF00C9355E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		211666E11E4AE24300C9355E /* RowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowModel.swift; path = Model/RowModel.swift; sourceTree = "<group>"; };
+		211666E41E4B02C300C9355E /* SQLiteDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDatabase.swift; sourceTree = "<group>"; };
+		211666E71E4B052200C9355E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211666E81E4B052200C9355E /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210F9FE01E5019AA00B62F27 /* libsqlite3.tbd in Frameworks */,
 				211666D11E4AE0AF00C9355E /* KVStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +73,7 @@
 				211666C91E4AE0AF00C9355E /* KVStore */,
 				211666D41E4AE0AF00C9355E /* KVStoreTests */,
 				211666C81E4AE0AF00C9355E /* Products */,
+				211666E61E4B052200C9355E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,8 +89,12 @@
 		211666C91E4AE0AF00C9355E /* KVStore */ = {
 			isa = PBXGroup;
 			children = (
+				2104A16F1E4C6BF600ABA7D8 /* sqlite3.h */,
 				211666CA1E4AE0AF00C9355E /* KVStore.h */,
 				211666CB1E4AE0AF00C9355E /* Info.plist */,
+				211666E31E4B00FA00C9355E /* Models */,
+				211666E41E4B02C300C9355E /* SQLiteDatabase.swift */,
+				2104A1731E4C8AFC00ABA7D8 /* KVStoreManager.swift */,
 			);
 			path = KVStore;
 			sourceTree = "<group>";
@@ -82,8 +104,25 @@
 			children = (
 				211666D51E4AE0AF00C9355E /* KVStoreTests.swift */,
 				211666D71E4AE0AF00C9355E /* Info.plist */,
+				210F9FE81E502B0300B62F27 /* DatabaseFiles */,
 			);
 			path = KVStoreTests;
+			sourceTree = "<group>";
+		};
+		211666E31E4B00FA00C9355E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				211666E11E4AE24300C9355E /* RowModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		211666E61E4B052200C9355E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				211666E71E4B052200C9355E /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +132,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211A22811E4FA16800A2D5F9 /* sqlite3.h in Headers */,
 				211666D81E4AE0AF00C9355E /* KVStore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +189,7 @@
 					211666C61E4AE0AF00C9355E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = TB2282VDLT;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					211666CF1E4AE0AF00C9355E = {
@@ -188,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210F9FE91E502B0300B62F27 /* DatabaseFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2104A1741E4C8AFC00ABA7D8 /* KVStoreManager.swift in Sources */,
+				211666E51E4B02C300C9355E /* SQLiteDatabase.swift in Sources */,
+				211666E21E4AE24300C9355E /* RowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +250,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210F9FEB1E502BE700B62F27 /* KVStore.h in Sources */,
+				211A22831E4FA1C600A2D5F9 /* sqlite3.h in Sources */,
 				211666D61E4AE0AF00C9355E /* KVStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +369,8 @@
 		211666DC1E4AE0AF00C9355E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TB2282VDLT;
@@ -334,6 +383,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = PN.KVStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,6 +391,8 @@
 		211666DD1E4AE0AF00C9355E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TB2282VDLT;
@@ -360,11 +412,15 @@
 		211666DF1E4AE0AF00C9355E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TB2282VDLT;
+				"HEADER_SEARCH_PATHS[arch=*]" = /Users/pritesh/Development/Libraries/KVStore/KVStore;
 				INFOPLIST_FILE = KVStoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PN.KVStoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = /Users/pritesh/Development/Libraries/KVStore/KVStore/;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -372,6 +428,8 @@
 		211666E01E4AE0AF00C9355E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TB2282VDLT;
 				INFOPLIST_FILE = KVStoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -400,6 +458,7 @@
 				211666DD1E4AE0AF00C9355E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		211666DE1E4AE0AF00C9355E /* Build configuration list for PBXNativeTarget "KVStoreTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +467,7 @@
 				211666E01E4AE0AF00C9355E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

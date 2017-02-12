@@ -1,20 +1,21 @@
 //
-//  KVStoreTests.swift
-//  KVStoreTests
+//  KVStoreExampleTests.swift
+//  KVStoreExampleTests
 //
-//  Created by Pritesh Nandgaonkar on 8/2/17.
+//  Created by Pritesh Nandgaonkar on 12/2/17.
 //  Copyright © 2017 Pritesh Nandgaonkar. All rights reserved.
 //
 
 import XCTest
+@testable import KVStoreExample
 
-class KVStoreTests: XCTestCase {
+class KVStoreExampleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
