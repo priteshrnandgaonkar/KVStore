@@ -8,11 +8,22 @@
 
 import Foundation
 
+/// This error enum takes care of all the error cases which might occur in the sqlite operations
 public enum SQLiteError: Error {
+    
+    /// This error occurs while opening the database connection
     case openDatabase(message: String)
+    
+    /// This error occurs while preparing the SQLite statement
     case prepare(message: String)
+    
+    /// This error occurs while steping the SQLite statement
     case step(message: String)
+    
+    /// This error occurs while binding the SQLite statement with data
     case bind(message: String)
+    
+    /// This error occurs while querying the data for key, but key doesnt exist
     case query(message: String)
 }
 
