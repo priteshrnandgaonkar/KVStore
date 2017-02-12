@@ -63,9 +63,10 @@ final class SQLiteDatabase {
     }
     
     static func open(path: String) throws -> SQLiteDatabase {
-        
+                
         var db: OpaquePointer? = nil
-        if sqlite3_open(path, &db) == SQLITE_OK {
+        // SQLite in serialized threaded mode
+        if sqlite3_open_v2(path, &db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil) == SQLITE_OK {
             return SQLiteDatabase(dbPointer: db!)
         } else {
             defer {
