@@ -18,6 +18,7 @@ protocol CRUDDelegate {
 public final class KVStoreManager<F: Hashable>: CRUDDelegate {
     
     let db: SQLiteDatabase
+    let queue: DispatchQueue
     
     /// This init method would create the db file with name passed as parameter and would open the database connection. And if the file already exist it will just open the database connection.Also it would create a table in these file if its not already created.Sqlite is configured in serialised mode
     ///
@@ -27,6 +28,7 @@ public final class KVStoreManager<F: Hashable>: CRUDDelegate {
     public init(with fileName: String) throws {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let docPath = paths[0]
+        self.queue = DispatchQueue(label: "com.KVStore.SQLQueries.DispatchQueue", qos: .userInitiated, attributes: .concurrent)
         db = try SQLiteDatabase.open(path: docPath + "/" + "\(fileName).sqlite")
         if !db.checkIfTableExist(table: RowModel.self) {
             try db.createTable(table: RowModel.self)
@@ -41,9 +43,11 @@ public final class KVStoreManager<F: Hashable>: CRUDDelegate {
     ///
     /// - returns: Void
     public func insert<T: Hashable>(value: Data, for key: T) throws {
-        let model = RowModel(id: (key.hashValue) , data: value)
-        try db.insert(model: model)
-        
+        // This is dispatched in queue to solve race condition. Although all db operations are serialized. The model creation(RowModel) can lead to race condition.The block is synchronous as the function wants to return only when the value is either updated or inserted
+       try queue.sync {
+            let model = RowModel(id: (key.hashValue) , data: value)
+            try db.insert(model: model)
+        }
     }
     
     /// Deletes the key value pair in the database in a syrialized way
@@ -62,7 +66,10 @@ public final class KVStoreManager<F: Hashable>: CRUDDelegate {
     ///
     /// - returns: Void
     public func update<T: Hashable>(value: Data, for key: T) throws {
-        try db.update(model:  RowModel(id: (key.hashValue) , data: value))
+        // This is dispatched in queue to solve race condition. Although all db operations are serialized. The model creation(RowModel) can lead to race condition.The block is synchronous as the function wants to return only when the value is either updated
+        try queue.sync {
+            try db.update(model:  RowModel(id: (key.hashValue) , data: value))
+        }
     }
     
     /// Fetches the value for a key in a syrialized way
