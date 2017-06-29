@@ -1,8 +1,8 @@
-#KVStore ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Pod Support](https://img.shields.io/cocoapods/v/KVStore.svg?maxAge=2592000)
+# KVStore ![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Pod Support](https://img.shields.io/cocoapods/v/KVStore.svg?maxAge=2592000)
 
 KVStore is a wrapper over sqlite to store and persist key value pairs.
 
-#Installation
+# Installation
 ### CocoaPods
 
 [CocoaPods](https://cocoapods.org/) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -47,7 +47,7 @@ github "priteshrnandgaonkar/KVStore" == 1.5
 ```
 Run `carthage update` to build the framework and drag the built CardsStack.framework into your Xcode project.
 
-#How to use?
+# How to use?
 
 Create an instance of type `KVStoreManager`. As the name suggest, its a store manager which manages data of the KVStore. It can be initialised as follows
 
