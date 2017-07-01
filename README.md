@@ -2,6 +2,8 @@
 
 KVStore is a wrapper over sqlite to store and persist key value pairs.
 
+## Demo
+Have a look at the [demo app](https://appetize.io/app/773rqj6a096emec0gn92dd3bn0?device=iphone7&scale=75&orientation=portrait&osVersion=10.3)
 # Installation
 ### CocoaPods
 

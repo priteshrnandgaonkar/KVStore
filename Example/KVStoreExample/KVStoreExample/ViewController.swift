@@ -9,7 +9,7 @@
 import UIKit
 import KVStore
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var insertKeyTextField: UITextField!
     @IBOutlet weak var insertValueTextField: UITextField!
@@ -34,6 +34,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func insertTapped(_ sender: UIButton) {
         let key = insertKeyTextField.text
         let value = insertValueTextField.text
